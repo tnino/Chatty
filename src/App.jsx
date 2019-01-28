@@ -30,6 +30,11 @@ class App extends Component {
   this.setState({ messages: [...this.state.messages, chat] });
 }
   componentDidMount() {
+    this.socket = new WebSocket("ws://localhost:3001");
+    this.socket.onopen = function (event) {
+      console.log("Connected to server"); 
+    };
+
     setTimeout(() => {
       // Add a new message to the list of messages in the data store
       const newMessage = {id: 3, username: "Michelle", content: "Hello there!"};
