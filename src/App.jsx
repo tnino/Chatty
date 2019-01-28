@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Navbar from './Navbar.jsx'
-import Message from './Message.jsx'
 import Messagelist from './Messagelist.jsx'
 import Chatbar from './Chatbar.jsx'
 
@@ -13,10 +12,12 @@ class App extends Component {
         {
           username: "Bob",
           content: "Has anyone seen my marbles?",
+          id: "1"
         },
         {
           username: "Anonymous",
-          content: "No, I think you lost them. You lost your marbles Bob. You lost them for good."
+          content: "No, I think you lost them. You lost your marbles Bob. You lost them for good.",
+          id : "2"
         }
       ]
     };
@@ -25,8 +26,7 @@ class App extends Component {
     return(
       <div>
         <Navbar />
-        <Message />
-        <Messagelist />
+        <Messagelist messages={this.state.messages}/>
         <Chatbar currentUser={this.state.currentUser} />
       </div>
   )}

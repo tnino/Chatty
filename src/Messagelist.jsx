@@ -1,14 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Message from './Message.jsx'
 
 class MessageList extends Component {
-  render() {
-    return (
- <main className="messages">
-<div className="message system">
-    Anonymous1 changed their name to nomnom.  
-  </div>
-  </main>
-    );
-  }
+
+    render() {
+        const newMessages = this.props.messages.map((message, index) => {
+            return <Message message={message} key={message.id} />
+        });
+         return (
+           <main className="messages">
+                {newMessages}
+            </main>
+        );
+    }
 }
+
 export default MessageList;
