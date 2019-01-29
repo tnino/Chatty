@@ -8,17 +8,18 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: "Bob"}, // optional. if currentUser is not defined, it means the user is Anonymous
+      
       messages: [
-        {
-          username: "Bob",
-          content: "Has anyone seen my marbles?",
-          id: "1"
-        },
-        {
-          username: "Anonymous",
-          content: "No, I think you lost them. You lost your marbles Bob. You lost them for good.",
-          id : "2"
-        }
+        // {
+        //   username: "Bob",
+        //   content: "Has anyone seen my marbles?",
+        //   id: "1"
+        // },
+        // {
+        //   username: "Anonymous",
+        //   content: "No, I think you lost them. You lost your marbles Bob. You lost them for good.",
+        //   id: "2"
+        // }
       ]
     };
   }
@@ -26,14 +27,18 @@ class App extends Component {
     let chat = {
       username: this.state.currentUser.name,
       content: newMessage
+      
   }
-  this.setState({ messages: [...this.state.messages, chat] });
+  // "User username sent content"
+  this.socket.send(JSON.stringify(chat))
+  // this.setState({ messages: [...this.state.messages, chat] });
 }
   componentDidMount() {
+   
     this.socket = new WebSocket("ws://localhost:3001");
     this.socket.onopen = function (event) {
       console.log("Connected to server"); 
-    };
+    };  
 
     setTimeout(() => {
       // Add a new message to the list of messages in the data store
