@@ -32,24 +32,33 @@ wss.on('connection', (ws) => {
       newmsg.type = 'incomingNotification';
     } else if (newmsg.type === 'postMessage') {
       newmsg.type = 'incomingMessage';
+     
     }
+// counter
+wss.clients.forEach(client => {
+  let clientCount = {
+    type: 'clientCount',
+    payload: {
+      count: wss.clients.size
+    }
+  }
 
+  client.send(JSON.stringify(clientCount))
+})
     // Broadcast to all.
-   
+    
     newmsg.id = uuidv1();
     console.log(newmsg);
-    // newmsg = JSON.stringify(newmsg);
+    let newmsgStringify = JSON.stringify(newmsg);
     wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
-        client.send(newmsg);
+        client.send(newmsgStringify);
       }
     });
   });
 });
 // Set up a callback for when a client closes the socket. This usually means they closed their browser.
 wss.on('close', () => console.log('Client disconnected'));
-
-
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,

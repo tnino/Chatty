@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: { name: ''},
-      messages: []
+      messages: [],
+      clientCount: 0
     };
   }
   onReceivedMessage = (event) => {
@@ -38,7 +39,6 @@ class App extends Component {
           type: "postNotification",
           content: userA + " changed their name to " + userB
       }
-      console.log(notification)
     
     this.setState({ currentUser:user})
     this.socket.send(JSON.stringify(notification))
@@ -57,7 +57,6 @@ class App extends Component {
       console.log("Connected to server");
     };
     
-
     setTimeout(() => {
       // Add a new message to the list of messages in the data store
       const newMessage = { id: 3, username: "Michelle", content: "Hello there!" };
@@ -71,7 +70,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar/>
         <Messagelist messages={this.state.messages} />
         <Chatbar chat={this.addNewMessage} user={this.addNewUsername} currentUser={this.state.currentUser} />
       </div>

@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Navbar extends Component {
   render() {
     return (
-<nav className="navbar">
-  <a href="/" className="navbar-brand">Chatty</a>
-</nav>
-
-
-
+      <div>
+        <nav className="navbar">
+          <a href="/" className="navbar-brand">Chatty</a>
+          <p className="navcount">Client Count:</p>
+          {/* {this.state.clientCount} */}
+          </nav>
+      </div>
     );
   }
 }
