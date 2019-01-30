@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Chatbar extends Component {
     constructor(props) {
         super(props);
-        this.state = { message: "" };
+        this.state = { content: "", username:""};
         // this.newMessages = this.newMessages.bind(this);
     }
     handleInputChange = (event) => {
@@ -20,12 +20,28 @@ class Chatbar extends Component {
         }
     }
 
+    handleUsernameChange = (event) => {
+        let newUsername = event.target.value
+        console.log(newUsername)
+        this.setState({
+            username: newUsername
+        })
+    }
+
+    handleUsernameKeyPress = (event) => {
+        if (event.key === "Enter") {
+            this.props.user(event.target.value)
+        }
+    }
+
     render() {
         return (
             <footer className="chatbar">
                 <input defaultValue={this.props.currentUser.name}
-                    className="chatbar-username"
-                    placeholder="Your Name (Optional)" />
+                       className="chatbar-username"
+                       placeholder="Your Name (Optional)"
+                       onChange={this.handleUsernameChange} 
+                       onKeyPress={this.handleUsernameKeyPress}/>
 
                 <input className="chatbar-message" 
                        placeholder="Type a message and hit ENTER" 
