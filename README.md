@@ -15,7 +15,7 @@ git remote add origin [YOUR NEW REPOSITORY]
 # Manually update your package.json file
 ```
 
-Install the dependencies and start the server.
+Install the dependencies and run this commands in teh server.
 
 ```
 npm install
@@ -41,6 +41,19 @@ npm run lint
 
 * React
 * Webpack
+* Chatty
+* Express
+* React-DOM
+* uuid
+* WS
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
-# Chatty
+
+### GIT
+
+![](https://im4.ezgif.com/tmp/ezgif-4-f8f1b614f815.gif)
+
+
+This project is designed for you to be able to comunicate with your friends using an easy to use messaging app.
+
+

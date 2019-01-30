@@ -21,7 +21,6 @@ class App extends Component {
         this.handleClientCount(parseMessage.payload)
       }   
       else{
-        
         const messages = this.state.messages.concat(parseMessage);
         this.setState({ messages: messages }) 
       }
