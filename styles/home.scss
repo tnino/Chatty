@@ -1,7 +1,7 @@
 h1 {
   color: #4C4C4C;
   font-family: 'Oswald', sans-serif;
-  font-size: 11px;
+  font-size: 9px;
   padding-left: 6px;
 }
 
@@ -9,15 +9,55 @@ h1 {
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 body {
-  background: #FAD6D6;
+  // background: #FAD6D6;
   color: black;
   font-family: 'Lobster', cursive;
   font-size: 14px;
   margin: 70px 0;
+  color: #black;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #FAD6D6, #23D5AB);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
 .chatbar {
-  background: #FA87B1;
+  background: black;
   border-top: 1px solid black;
   bottom: 0;
   display: flex;
@@ -72,8 +112,9 @@ body {
 }
 
 .navbar {
-  background: #FAC4E2;
-  border-bottom: 1px solid black;
+  background: rgb(0, 0, 0);
+  border-bottom: 1px solid #black;
+  color: #FA87B1;
   height: 60px;
   left: 0;
   padding: 0 10px;
@@ -95,5 +136,6 @@ body {
 }
 
 .navcount{
+
   float: right;
 }

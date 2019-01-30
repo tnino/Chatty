@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class Message extends Component {
   render() {
@@ -9,12 +9,11 @@ class Message extends Component {
     } else {
       return (
         <div className="message">
-         <strong>{this.props.message.username}&nbsp;&nbsp;&nbsp;</strong> {this.props.message.content}
-         </div>   
-            );
+          <strong>{this.props.message.username} :&nbsp;&nbsp;&nbsp;</strong> {this.props.message.content}
+        </div>
+      );
     }
-   
   }
 }
 
-export default Message ;
+export default Message;

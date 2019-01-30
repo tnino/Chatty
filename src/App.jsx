@@ -18,9 +18,10 @@ class App extends Component {
     const parseMessage = JSON.parse(event.data);
       if (parseMessage.type === 'clientCount') {
         console.log(this)
-        this.handleClientCount(parsedMessage.payload)
+        this.handleClientCount(parseMessage.payload)
       }   
       else{
+        
         const messages = this.state.messages.concat(parseMessage);
         this.setState({ messages: messages }) 
       }
