@@ -32,8 +32,16 @@ class App extends Component {
     let user = {
       name: newUsername
     }
+      let userA = this.state.currentUser.name
+      let userB = newUsername
+      let notification = {
+          type: "postNotification",
+          content: userA + " changed their name to " + userB
+      }
+      console.log(notification)
+    
     this.setState({ currentUser:user})
-    this.socket.send(JSON.stringify(user))
+    this.socket.send(JSON.stringify(notification))
     console.log(this.state.currentUser.name)
   }
 
@@ -48,6 +56,7 @@ class App extends Component {
     this.socket.onopen = function (event) {
       console.log("Connected to server");
     };
+    
 
     setTimeout(() => {
       // Add a new message to the list of messages in the data store
