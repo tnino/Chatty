@@ -16,37 +16,37 @@ const server = express()
   .listen(PORT, '0.0.0.0', 'localhost', () => console.log(`Listening on ${PORT}`));
 
 // Create the WebSockets server
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({
+  server
+});
 
 // Set up a callback that will run when a client connects to the server
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', (ws) => {
   console.log('Client connected');
-
   ws.on('message', function incoming(data) {
     console.log('MESSAGE:', data);
     var newmsg = JSON.parse(data);
-    if(newmsg.type === 'postNotification'){
+    if (newmsg.type === 'postNotification') {
       // set type to incomingNotification
       newmsg.type = 'incomingNotification';
     } else if (newmsg.type === 'postMessage') {
       newmsg.type = 'incomingMessage';
-     
-    }
-// counter
-wss.clients.forEach(client => {
-  let clientCount = {
-    type: 'clientCount',
-    payload: {
-      count: wss.clients.size
-    }
-  }
 
-  client.send(JSON.stringify(clientCount))
-})
+    }
+    // counter
+    wss.clients.forEach(client => {
+      let clientCount = {
+        type: 'clientCount',
+        payload: {
+          count: wss.clients.size
+        }
+      }
+
+      client.send(JSON.stringify(clientCount))
+    })
     // Broadcast to all.
-    
     newmsg.id = uuidv1();
     console.log(newmsg);
     let newmsgStringify = JSON.stringify(newmsg);
@@ -59,15 +59,14 @@ wss.clients.forEach(client => {
 });
 // Set up a callback for when a client closes the socket. This usually means they closed their browser.
 wss.on('close', () => console.log('Client disconnected'));
-
 new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
-  watchOptions: {
-    aggregateTimeout: 300,
-    poll: 1000,
-    ignored: /node_modules/
-  }
-})
+    publicPath: config.output.publicPath,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+      ignored: /node_modules/
+    }
+  })
   .listen(3000, '0.0.0.0', function (err, result) {
     if (err) {
       console.log(err);
