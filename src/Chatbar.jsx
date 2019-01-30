@@ -13,14 +13,12 @@ class Chatbar extends Component {
             content: newMessage
         })
     }
-
+    
     handleKeyPress = (event) => {
         if (event.key === "Enter") {
             this.props.chat(this.state.content)
         }
     }
-
-    
 
     handleUsernameKeyPress = (event) => {
         if (event.key === "Enter") {

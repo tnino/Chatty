@@ -7,16 +7,27 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: { name: ''},
+      currentUser: { name: 'Anonymous'},
       messages: [],
       clientCount: 0
     };
   }
+
   onReceivedMessage = (event) => {
     console.log('this works?', event.data);
     const parseMessage = JSON.parse(event.data);
     const messages = this.state.messages.concat(parseMessage);
-      this.setState({ messages: messages })
+      this.setState({ messages: messages }) 
+      if (parseMessage.type === 'clientCount') {
+        console.log(this)
+        this.handleClientCount(parseMessage.payload)
+      }   
+  }
+  handleClientCount = (data) => {
+    console.log("hsdbgdihd");
+    this.setState({
+      clientCount: data.count
+    })
   }
   
   addNewMessage = (newMessage) => {
@@ -70,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <Navbar clientCount={this.state.clientCount}/>
         <Messagelist messages={this.state.messages} />
         <Chatbar chat={this.addNewMessage} user={this.addNewUsername} currentUser={this.state.currentUser} />
       </div>
