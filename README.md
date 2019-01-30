@@ -51,7 +51,7 @@ npm run lint
 
 ### GIT
 
-![](https://im4.ezgif.com/tmp/ezgif-4-f8f1b614f815.gif)
+![](demo.gif)
 
 
 This project is designed for you to be able to comunicate with your friends using an easy to use messaging app.
