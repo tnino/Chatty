@@ -16,12 +16,14 @@ class App extends Component {
   onReceivedMessage = (event) => {
     console.log('this works?', event.data);
     const parseMessage = JSON.parse(event.data);
-    const messages = this.state.messages.concat(parseMessage);
-      this.setState({ messages: messages }) 
       if (parseMessage.type === 'clientCount') {
         console.log(this)
-        this.handleClientCount(parseMessage.payload)
+        this.handleClientCount(parsedMessage.payload)
       }   
+      else{
+        const messages = this.state.messages.concat(parseMessage);
+        this.setState({ messages: messages }) 
+      }
   }
   handleClientCount = (data) => {
     console.log("hsdbgdihd");
